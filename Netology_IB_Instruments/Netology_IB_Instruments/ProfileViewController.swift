@@ -14,16 +14,8 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .blue
 
         if let subview = Bundle.main.loadNibNamed("ProfileView", owner: nil, options: nil)?.first as? UIView {
-                    self.view.addSubview(subview)
-                }
-
+            self.view.addSubview(subview)
+        }
     }
-
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//        show(ProfileViewControllerXib(), sender: nil)
-//    }
-
 
 }

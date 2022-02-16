@@ -86,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF6479CF27BD074200C15B67 /* unused */ = {
+			isa = PBXGroup;
+			children = (
+				FFF8DA4F27BBE7750013D186 /* CustomView.swift */,
+			);
+			path = unused;
+			sourceTree = "<group>";
+		};
 		FF6E726827BBE2C700E99BD0 = {
 			isa = PBXGroup;
 			children = (
@@ -118,9 +126,9 @@
 				FF6E728227BBE2C800E99BD0 /* Info.plist */,
 				FF6E72A427BBE2EC00E99BD0 /* ProfileView.xib */,
 				FF6E72A627BBE60100E99BD0 /* ProfileView.swift */,
-				FFF8DA4F27BBE7750013D186 /* CustomView.swift */,
 				FFF8DA4B27BBE6C60013D186 /* Profile.storyboard */,
 				FFF8DA4D27BBE6D70013D186 /* ProfileViewController.swift */,
+				FF6479CF27BD074200C15B67 /* unused */,
 			);
 			path = Netology_IB_Instruments;
 			sourceTree = "<group>";
@@ -221,7 +229,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FF6E726C27BBE2C700E99BD0 /* Build configuration list for PBXProject "Netology_IB_InstrumentsV3" */;
+			buildConfigurationList = FF6E726C27BBE2C700E99BD0 /* Build configuration list for PBXProject "Netology_IB_Instruments" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -581,7 +589,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF6E726C27BBE2C700E99BD0 /* Build configuration list for PBXProject "Netology_IB_InstrumentsV3" */ = {
+		FF6E726C27BBE2C700E99BD0 /* Build configuration list for PBXProject "Netology_IB_Instruments" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF6E729927BBE2C800E99BD0 /* Debug */,
