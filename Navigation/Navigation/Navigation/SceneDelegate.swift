@@ -15,12 +15,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        //        let feedVC = UINavigationController(rootViewController: FeedVC())
-        //        let profileVC = UINavigationController(rootViewController: ProfileVC())
-
-        //        let tabBar = UITabBarController()
-        //        tabBar.viewControllers = [feedVC, profileVC]
-
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = createTabBar()
@@ -58,24 +52,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
-
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-
     }
 
 }
-

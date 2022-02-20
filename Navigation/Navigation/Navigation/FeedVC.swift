@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class FeedVC: UIViewController {
 
     let buttonNext = NewButton(color: .systemPink, title: "Next", systemImageName: "chevron.up.square")
@@ -21,14 +19,8 @@ class FeedVC: UIViewController {
     }
 
     func configureNextButton() {
-
-        // добавляем кнопку на экран
         view.addSubview(buttonNext)
-
-        // нажатие на кнопку
         buttonNext.addTarget(self, action: #selector(showPostOne), for: .touchUpInside)
-
-        // размещаем кнопку
         NSLayoutConstraint.activate([
             buttonNext.widthAnchor.constraint(equalToConstant: 250),
             buttonNext.heightAnchor.constraint(equalToConstant: 50),
@@ -39,7 +31,6 @@ class FeedVC: UIViewController {
 
     @objc func showPostOne() {
         show(PostVC(), sender: nil)
-        //present(PostVC(), animated: true) - показывается модально
     }
 
 }

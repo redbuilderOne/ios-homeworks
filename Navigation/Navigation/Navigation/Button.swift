@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class NewButton: UIButton {
 
     // we need to OVERRIDE INIT because we want to use our method "cofigure()" to add our own special configurations
@@ -43,5 +41,3 @@ class NewButton: UIButton {
     }
 
 }
-
-

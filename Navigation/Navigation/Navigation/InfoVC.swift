@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class InfoVC: UIViewController {
 
     let buttonAlert = NewButton(color: .systemRed, title: "Alert", systemImageName: "xmark.shield")
@@ -40,9 +38,6 @@ class InfoVC: UIViewController {
 
     @objc func showAlert() {
         Alert.showBasicAlert(on: self, with: "Alert", message: "Alert Message")
-        // show(PostVC(), sender: nil)
-        //present(PostVC(), animated: true) - показывается модально
     }
-
     
 }
