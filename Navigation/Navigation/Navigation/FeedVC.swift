@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class FeedVC: UIViewController {
 
     let buttonNext = NewButton(color: .systemPink, title: "Next", systemImageName: "chevron.up.square")
@@ -37,6 +39,7 @@ class FeedVC: UIViewController {
 
     @objc func showPostOne() {
         show(PostVC(), sender: nil)
+        //present(PostVC(), animated: true) - показывается модально
     }
 
 }

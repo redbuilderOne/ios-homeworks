@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class InfoVC: UIViewController {
 
     let buttonAlert = NewButton(color: .systemRed, title: "Alert", systemImageName: "xmark.shield")
@@ -27,6 +29,7 @@ class InfoVC: UIViewController {
         // нажатие на кнопку Alert
         buttonAlert.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
 
+        // размещаем кнопку
         NSLayoutConstraint.activate([
             buttonAlert.widthAnchor.constraint(equalToConstant: 250),
             buttonAlert.heightAnchor.constraint(equalToConstant: 50),
@@ -37,6 +40,9 @@ class InfoVC: UIViewController {
 
     @objc func showAlert() {
         Alert.showBasicAlert(on: self, with: "Alert", message: "Alert Message")
+        // show(PostVC(), sender: nil)
+        //present(PostVC(), animated: true) - показывается модально
     }
+
     
 }

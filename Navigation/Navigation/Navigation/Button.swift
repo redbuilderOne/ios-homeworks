@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class NewButton: UIButton {
 
     // we need to OVERRIDE INIT because we want to use our method "cofigure()" to add our own special configurations
@@ -21,7 +23,6 @@ class NewButton: UIButton {
 
     // we create func to configure settings of any UIButton
     init(color: UIColor, title: String, systemImageName: String) {
-        
         // constraints ( .zero = CGRect ) zero height, zero widhth, zero coordinates (x, y, h, w)
         super.init(frame: .zero)
 
@@ -37,7 +38,10 @@ class NewButton: UIButton {
 
         configuration?.imagePadding = 5
         configuration?.imagePlacement = .trailing
+
         translatesAutoresizingMaskIntoConstraints = false
     }
 
 }
+
+
