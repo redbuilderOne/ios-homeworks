@@ -31,7 +31,9 @@ class ProfileHeaderView: UIView {
         self.configureProfileLabel()
         self.configureStatusLabel()
         self.configureTapGesture()
-        //self.configureTextField()
+        self.configureTextField()
+
+        textField.isHidden = true
     }
 
     required init?(coder: NSCoder) {
@@ -40,6 +42,8 @@ class ProfileHeaderView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+
+        profileImageView.translatesAutoresizingMaskIntoConstraints = false
 
         profileImageView.anchor(top: safeAreaLayoutGuide.topAnchor,
                                 left: safeAreaLayoutGuide.leftAnchor,
@@ -50,23 +54,25 @@ class ProfileHeaderView: UIView {
 
         showStatusButton.anchor(top: profileImageView.topAnchor,
                                 left: safeAreaLayoutGuide.leftAnchor,
+                                bottom: safeAreaLayoutGuide.bottomAnchor,
                                 right: safeAreaLayoutGuide.rightAnchor,
                                 paddingTop: 180,
                                 paddingLeft: 16,
                                 paddingRight: 16,
+                                paddingBottom: 980,
                                 width: 150,
                                 height: 50)
 
         showStatusButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 
-        statusLabel.anchor(top: safeAreaLayoutGuide.topAnchor,
+        statusLabel.anchor(top: profileLabel.topAnchor,
                            left: profileImageView.leftAnchor,
                            bottom: showStatusButton.bottomAnchor,
                            right: safeAreaLayoutGuide.rightAnchor,
-                           paddingTop: 100,
+                           paddingTop: 80,
                            paddingLeft: 160,
                            paddingRight: 16,
-                           paddingBottom: 120,
+                           paddingBottom: 80,
                            width: 150,
                            height: 50)
 
@@ -82,6 +88,27 @@ class ProfileHeaderView: UIView {
         profileImageView.image = ProfileImages.profileImg
     }
 
+    @objc func buttonPressed() {
+        textField.isHidden = false
+        print("\(statusLabel.text!)")
+        showStatusButton.configuration?.title = "Set status"
+        showStatusButton.configuration?.baseForegroundColor = .white
+        showStatusButton.configuration?.baseBackgroundColor = .black
+
+        showStatusButton.addTarget(self, action: #selector(secondButtonPress), for: .touchUpInside)
+    }
+
+    @objc func secondButtonPress() {
+        textField.isHidden = true
+
+        statusLabel.text = statusText
+        showStatusButton.configuration?.title = "Show status"
+        showStatusButton.configuration?.baseForegroundColor = .white
+        showStatusButton.configuration?.baseBackgroundColor = .black
+
+        showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+    }
+
     private func configureShowStatusButton() {
         showStatusButton.backgroundColor = .blue
         showStatusButton.titleLabel?.textColor = .white
@@ -93,18 +120,6 @@ class ProfileHeaderView: UIView {
         showStatusButton.clipsToBounds = true
 
         showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-    }
-
-    @objc func buttonPressed() {
-        self.configureTextField()
-        print("\(statusLabel.text!)")
-        showStatusButton.configuration?.title = "Set status"
-
-        showStatusButton.addTarget(self, action: #selector(secondButtonPress), for: .touchUpInside)
-    }
-
-    @objc func secondButtonPress() {
-        statusLabel.text = statusText
     }
 
     private func configureProfileLabel() {
@@ -140,10 +155,9 @@ class ProfileHeaderView: UIView {
                          left: statusLabel.leftAnchor,
                          bottom: showStatusButton.bottomAnchor,
                          right: safeAreaLayoutGuide.rightAnchor,
-                         paddingTop: 45,
-                         paddingLeft: 16,
+                         paddingTop: 50,
                          paddingRight: 16,
-                         paddingBottom: 45,
+                         paddingBottom: 60,
                          width: 100,
                          height: 40)
 
@@ -175,7 +189,7 @@ class ProfileHeaderView: UIView {
     }
 
     @objc func fingerTap() {
-        print("fingerTap was called")
+        print("fingerTap was called. Текст отредактирован")
         // при нажатии пальем в пустое поле экрана завершается редактирование текста self.endEditing(true)
         self.endEditing(true)
     }
