@@ -22,6 +22,7 @@
 		FF75DFFE27BF9ACD005C48A4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF75DFFD27BF9ACD005C48A4 /* ProfileVC.swift */; };
 		FF7D6A9B27CE84A8001B507E /* StackViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7D6A9A27CE84A8001B507E /* StackViewButton.swift */; };
 		FF89494A27DBD15C00B40707 /* PhotoGalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89494927DBD15C00B40707 /* PhotoGalleryVC.swift */; };
+		FF89494C27DC94E800B40707 /* PhotoGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89494B27DC94E800B40707 /* PhotoGalleryCollectionViewCell.swift */; };
 		FF925F1A27CFDBD40089764A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF925F1927CFDBD40089764A /* LoginViewController.swift */; };
 		FF925F1C27CFDF830089764A /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF925F1B27CFDF830089764A /* CustomColor.swift */; };
 		FFF4B02927C0DCA7005CA9F1 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF4B02827C0DCA7005CA9F1 /* PostVC.swift */; };
@@ -71,6 +72,7 @@
 		FF75DFFD27BF9ACD005C48A4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		FF7D6A9A27CE84A8001B507E /* StackViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewButton.swift; sourceTree = "<group>"; };
 		FF89494927DBD15C00B40707 /* PhotoGalleryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryVC.swift; sourceTree = "<group>"; };
+		FF89494B27DC94E800B40707 /* PhotoGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF925F1927CFDBD40089764A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FF925F1B27CFDF830089764A /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		FFF4B02827C0DCA7005CA9F1 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				FF0227B927C3890D0067C765 /* ProfileHeaderView.swift */,
 				FF89494927DBD15C00B40707 /* PhotoGalleryVC.swift */,
+				FF89494B27DC94E800B40707 /* PhotoGalleryCollectionViewCell.swift */,
 				FF09F9B227D27A4100384B2F /* ProfileTableHeaderView.swift */,
 				FF0227BB27C3892E0067C765 /* ProfileViewController.swift */,
 				FF925F1927CFDBD40089764A /* LoginViewController.swift */,
@@ -262,7 +265,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v3" */;
+			buildConfigurationList = FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v4" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -332,6 +335,7 @@
 				FFF6C76527D52F40009260AB /* PhotosGalleryView.swift in Sources */,
 				FF925F1A27CFDBD40089764A /* LoginViewController.swift in Sources */,
 				FFF4B02927C0DCA7005CA9F1 /* PostVC.swift in Sources */,
+				FF89494C27DC94E800B40707 /* PhotoGalleryCollectionViewCell.swift in Sources */,
 				FF09F9B327D27A4100384B2F /* ProfileTableHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,7 +633,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v3" */ = {
+		FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v4" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF75DFF027BF9904005C48A4 /* Debug */,

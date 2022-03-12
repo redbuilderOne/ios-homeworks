@@ -22,10 +22,15 @@ class PhotoGalleryVC: UIViewController {
     }
 
     @objc func imageViewPressed() {
-        let rootVC = UIViewController()
-        rootVC.title = "Photo Gallery"
-        let navVC = UINavigationController(rootViewController: rootVC)
-        present(navVC, animated: true)
+        let photoRootVC = SecondPhotoViewController()
+        lazy var photoNavVC = UINavigationController(rootViewController: photoRootVC)
+        photoRootVC.title = "Photo Gallery"
+        self.show(photoNavVC, sender: self)
+
+//        let rootVC = UIViewController()
+//        rootVC.title = "Photo Gallery"
+//        let navVC = UINavigationController(rootViewController: rootVC)
+//        present(navVC, animated: true)
     }
 }
 

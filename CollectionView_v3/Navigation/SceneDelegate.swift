@@ -14,7 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = createTabBar()
         window?.makeKeyAndVisible()
-
     }
 
     func createFeedNavigationController() -> UINavigationController {
@@ -36,7 +35,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         loginViewController.title = "Profile"
         loginViewController.tabBarItem.image = UIImage(named: "icons8-iOS Filled-33901-50-ffffff")
         loginViewController.tabBarItem.selectedImage = UIImage(named: "icons8-iOS-Cat Profile")
-
+//
+//        let secondPhotoVC = SecondPhotoViewController()
+//        return UINavigationController(rootViewController: secondPhotoVC)
         return UINavigationController(rootViewController: loginViewController)
     }
 

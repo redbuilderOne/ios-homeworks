@@ -15,16 +15,14 @@ class CustomCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    static let leftArrowButton = NewButton(color: .systemBackground, title: "", systemImageName: "arrow.forward")
+    static let leftArrowButton = NewButton(color: .black, title: "", systemImageName: "arrow.forward")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.clipsToBounds = true
         contentView.backgroundColor = .systemBackground
         contentView.addSubview(myImageView)
-        //        contentView.addSubview(CustomCollectionViewCell.leftArrowButton)
-        configureMyImageView()
-        //        configureLeftArrowButton()
+        ifTappedOnMyImageView()
     }
 
     required init?(coder: NSCoder) {
@@ -33,28 +31,28 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-
-        myImageView.frame = CGRect(x: 5,
+        myImageView.frame = CGRect(x: 0,
                                    y: 0,
-                                   width: contentView.frame.size.width-10,
-                                   height: contentView.frame.size.height-50)
-
-        //        photosLabel.frame = CGRect(x: 5,
-        //                                   y: contentView.frame.size.height-50,
-        //                                   width: contentView.frame.size.width-10,
-        //                                   height: 50)
-
-        //        CustomCollectionViewCell.leftArrowButton.frame = CGRect(x: 12,
-        //                                       y: 24,
-        //                                       width: 30,
-        //                                       height: 30)
+                                   width: contentView.frame.size.width,
+                                   height: contentView.frame.size.height)
     }
 
-    func configureMyImageView() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PhotoGalleryVC.imageViewPressed))
+    func ifTappedOnMyImageView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(objcPushPhotoGallery))
         myImageView.addGestureRecognizer(tapGesture)
         myImageView.isUserInteractionEnabled = true
     }
+
+    @objc func objcPushPhotoGallery() {
+        print("objcPushPhotoGallery is pressed")
+    }
+
+//       @objc func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//            let photoRootVC = SecondPhotoViewController()
+//            photoRootVC.title = "Photo Gallery"
+//            lazy var photoNavVC: Void = UINavigationController(rootViewController: photoRootVC)
+//                .pushViewController(SecondPhotoViewController(), animated: true)
+//        }
 
     public func configureCollectionView(image: UIImage) {
         myImageView.image = image

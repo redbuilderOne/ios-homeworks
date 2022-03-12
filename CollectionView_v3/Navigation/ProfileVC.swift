@@ -6,7 +6,6 @@ class ProfileVC: UIViewController {
     lazy var profileHeaderView = ProfileHeaderView()
     lazy var tableView = ProfileTableHeaderView()
     var collectionView: UICollectionView?
-    var collectionBackgroundView = UIView()
 
     var posts = arrayOfPosts
     let previewCollectionViewCells = previewArrayOfCollectionViewImg
@@ -23,59 +22,16 @@ class ProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Posts"
         view.backgroundColor = .lightGray
-        view.addSubview(collectionBackgroundView)
         view.addSubview(profileHeaderView)
         view.addSubview(tableView)
-        collectionBackgroundView.addSubview(CustomCollectionViewCell.leftArrowButton)
         configureProfileHeaderView()
         configureTableView()
-        configureCollectionBackgroundView()
-        placingLeftArrowButton()
-        placingPhotosLabel()
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         createLayoutCollectionView()
-    }
-
-    func configureCollectionBackgroundView() {
-        collectionBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        collectionBackgroundView.backgroundColor = .systemBackground
-        collectionBackgroundView.backgroundColor = .red
-        collectionBackgroundView.anchor(top: profileHeaderView.showStatusButton.topAnchor,
-                                        bottom: tableView.topAnchor,
-                                        paddingTop: 80,
-                                        paddingBottom: 16,
-                                        height: 160)
-    }
-
-    func placingLeftArrowButton() {
-        CustomCollectionViewCell.leftArrowButton.frame = CGRect(x: 12,
-                                                                y: 24,
-                                                                width: 30,
-                                                                height: 30)
-        NSLayoutConstraint.activate([
-            CustomCollectionViewCell.leftArrowButton.widthAnchor.constraint(equalToConstant: 30),
-            CustomCollectionViewCell.leftArrowButton.heightAnchor.constraint(equalToConstant: 30),
-            CustomCollectionViewCell.leftArrowButton.trailingAnchor.constraint(equalTo: collectionBackgroundView.trailingAnchor, constant: -16)
-        ])
-    }
-
-    func placingPhotosLabel() {
-        //        photosLabel.frame = CGRect(x: 5,
-        //                                   y: collectionBackgroundView.frame.size.height-50,
-        //                                   width: collectionBackgroundView.frame.size.width-10,
-        //                                   height: 50)
-        //
-        //        NSLayoutConstraint.activate([
-        //            photosLabel.topAnchor.constraint(equalTo: collectionBackgroundView.topAnchor, constant: 12),
-        //            photosLabel.bottomAnchor.constraint(equalTo: collectionBackgroundView.bottomAnchor, constant: 12),
-        //            photosLabel.leadingAnchor.constraint(equalTo: collectionBackgroundView.leadingAnchor, constant: 12),
-        //            photosLabel.trailingAnchor.constraint(equalTo: collectionBackgroundView.safeAreaLayoutGuide.trailingAnchor)
-        //        ])
     }
 
     struct Cells {
@@ -96,10 +52,14 @@ class ProfileVC: UIViewController {
         layout.minimumLineSpacing = ConstantsForCollectionView.galleryMinLineSpacing
         layout.minimumInteritemSpacing = 1
 
-        // оступы от краев границы
-        collectionView?.contentInset = UIEdgeInsets(top: 24, left: ConstantsForCollectionView.leftDistanceToView, bottom: 12, right: ConstantsForCollectionView.rightDistanceToView)
+        layout.sectionInset = UIEdgeInsets(top: 24, left: 12, bottom: 12, right: 12)
 
-        // размер ячейки
+        // оступы от краев границы
+        collectionView?.contentInset = UIEdgeInsets(top: 24,
+                                                    left: ConstantsForCollectionView.leftDistanceToView,
+                                                    bottom: 12,
+                                                    right: ConstantsForCollectionView.rightDistanceToView)
+
         layout.itemSize = CGSize(width: view.frame.size.width/3,
                                  height: view.frame.size.height/3)
 
@@ -111,9 +71,14 @@ class ProfileVC: UIViewController {
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
-        view.backgroundColor = .systemBackground
-        collectionBackgroundView.addSubview(collectionView)
-        collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
+        view.addSubview(collectionView)
+        collectionView.addSubview(photosLabel)
+        placePhotoLabel()
+        collectionView.addSubview(CustomCollectionViewCell.leftArrowButton)
+        placeLeftArrowButton()
+        leftArrowButtonPressConfig()
+//        configureTapGesture()
+        collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
 
         collectionView.anchor(top: profileHeaderView.showStatusButton.topAnchor,
@@ -121,6 +86,22 @@ class ProfileVC: UIViewController {
                               paddingTop: 80,
                               paddingBottom: 16,
                               height: 160)
+    }
+
+    func placePhotoLabel() {
+        photosLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
+        photosLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        photosLabel.anchor(top: collectionView?.topAnchor,
+                           paddingTop: -6,
+                           height: 50)
+    }
+
+    func placeLeftArrowButton() {
+        CustomCollectionViewCell.leftArrowButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12).isActive = true
+        CustomCollectionViewCell.leftArrowButton.centerYAnchor.constraint(equalTo: photosLabel.centerYAnchor).isActive = true
+        CustomCollectionViewCell.leftArrowButton.anchor(top: collectionView?.topAnchor,
+                           paddingTop: -6,
+                           height: 50)
     }
 
     private func configureProfileHeaderView() {
@@ -139,7 +120,6 @@ class ProfileVC: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: Cells.postCell)
-
         tableView.anchor(left: view.safeAreaLayoutGuide.leftAnchor)
         tableView.anchor(right: view.safeAreaLayoutGuide.rightAnchor)
         tableView.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
@@ -159,12 +139,36 @@ class ProfileVC: UIViewController {
 
     func leftArrowButtonPressConfig() {
         CustomCollectionViewCell.leftArrowButton.addTarget(self, action: #selector(pushPhotoGallery), for: .touchUpInside)
+        print("leftArrowButton is pressed")
     }
 
-    @objc func pushPhotoGallery() -> UINavigationController {
-        let photoGalleryVC = PhotoGalleryVC()
-        photoGalleryVC.title = "Photo Gallery"
-        return UINavigationController(rootViewController: photoGalleryVC)
+    @objc func pushPhotoGallery() {
+        //select first row of first section
+        let photoRootVC = SecondPhotoViewController()
+        photoRootVC.title = "Photo Gallery"
+        lazy var photoNavVC = UINavigationController(rootViewController: photoRootVC)
+        show(photoNavVC, sender: self)
+    }
+
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        let photoRootVC = SecondPhotoViewController()
+//        photoRootVC.title = "Photo Gallery"
+//        lazy var photoNavVC = UINavigationController(rootViewController: photoRootVC)
+//        show(photoNavVC, sender: self)
+////        pushViewController(SecondPhotoViewController(), animated: true)
+//    }
+    
+    func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fingerTap))
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func fingerTap() {
+        print("fingerTap was called")
+        let photoRootVC = SecondPhotoViewController()
+        photoRootVC.title = "Photo Gallery"
+        lazy var photoNavVC = UINavigationController(rootViewController: photoRootVC)
+        show(photoNavVC, sender: self)
     }
 }
 
@@ -173,7 +177,6 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
-
     // what cells to show
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.postCell) as! PostTableViewCell
@@ -181,7 +184,6 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         cell.set(post: post)
         return cell
     }
-
     // высота ячейки
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 460
@@ -189,21 +191,17 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
-
     // количество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return previewCollectionViewCells.count
     }
-
     // настройка ячеек
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
-
         // подгружаем изображения из массива
         cell.configureCollectionView(image: arrayOfCollectionViewImg[indexPath.row])
         cell.layer.cornerRadius = 6
         cell.clipsToBounds = true
-        cell.contentView.backgroundColor = .systemRed
         return cell
     }
 }
@@ -211,13 +209,6 @@ extension ProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
 extension ProfileVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //
-        //        let cellFrame = collectionView.frame
-        //        let widthCell = cellFrame.width
-        //        let heightCell = widthCell
-        //
-        //        let spacing = CGFloat((3 + 1)) * 2 / CGFloat(3)
-
-        return CGSize(width: 100, height: 80)
+        return CGSize(width: 90, height: 90)
     }
 }

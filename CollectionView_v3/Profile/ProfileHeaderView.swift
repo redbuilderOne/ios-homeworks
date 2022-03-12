@@ -24,7 +24,6 @@ class ProfileHeaderView: UIView {
         configureShowStatusButton()
         configureProfileLabel()
         configureStatusLabel()
-        configureTapGesture()
         configureTextField()
 
         textField.isHidden = true
@@ -84,7 +83,6 @@ class ProfileHeaderView: UIView {
 
     @objc func buttonPressed() {
         textField.isHidden = false
-
         print("\(statusLabel.text!)")
         showStatusButton.configuration?.title = "Set status"
         showStatusButton.configuration?.baseForegroundColor = .white
@@ -94,12 +92,10 @@ class ProfileHeaderView: UIView {
 
     @objc func secondButtonPress() {
         textField.isHidden = true
-
         statusLabel.text = statusText
         showStatusButton.configuration?.title = "Show status"
         showStatusButton.configuration?.baseForegroundColor = .white
         showStatusButton.configuration?.baseBackgroundColor = .black
-
         showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
 
@@ -123,7 +119,6 @@ class ProfileHeaderView: UIView {
         profileLabel.translatesAutoresizingMaskIntoConstraints = false
         profileLabel.clipsToBounds = true
         profileLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-
         profileLabel.anchor(top: safeAreaLayoutGuide.topAnchor,
                             left: profileImageView.leftAnchor,
                             right: safeAreaLayoutGuide.rightAnchor,
@@ -148,7 +143,6 @@ class ProfileHeaderView: UIView {
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         // чтобы доставать и убирать клавиатуру + нужен протокол UITextFieldDelegate в расширении
         textField.delegate = self
-
         textField.anchor(top: statusLabel.topAnchor,
                          left: statusLabel.leftAnchor,
                          bottom: showStatusButton.bottomAnchor,
@@ -166,16 +160,21 @@ class ProfileHeaderView: UIView {
         textField.autocorrectionType = .yes
     }
 
+    func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fingerTap))
+        self.addGestureRecognizer(tapGesture)
+    }
+
     @objc func statusTextChanged(_ textField: UITextField) -> String {
         let newTextTyped = textField.text ?? "No text"
         statusText = newTextTyped
         return statusText
     }
 
-    private func configureTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fingerTap))
-        self.addGestureRecognizer(tapGesture)
-    }
+    //    private func configureTapGesture() {
+    //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fingerTap))
+    //        self.addGestureRecognizer(tapGesture)
+    //    }
 
     @objc func fingerTap() {
         print("fingerTap was called")
