@@ -42,8 +42,6 @@ class ProfileVC: UIViewController {
         static let leftDistanceToView: CGFloat = 12
         static let rightDistanceToView: CGFloat = 12
         static let galleryMinLineSpacing: CGFloat = 8
-        //        ширина текущго экрана
-        //        static let galleryItemWidth = (UIScreen.main.bounds.width - ConstantsForCollectionView.leftDistanceToView - ConstantsForCollectionView.rightDistanceToView - (ConstantsForCollectionView.galleryMinLineSpacing / 4)) / 2
     }
 
     func createLayoutCollectionView() {
@@ -51,10 +49,7 @@ class ProfileVC: UIViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = ConstantsForCollectionView.galleryMinLineSpacing
         layout.minimumInteritemSpacing = 1
-
         layout.sectionInset = UIEdgeInsets(top: 24, left: 12, bottom: 12, right: 12)
-
-        // оступы от краев границы
         collectionView?.contentInset = UIEdgeInsets(top: 24,
                                                     left: ConstantsForCollectionView.leftDistanceToView,
                                                     bottom: 12,
@@ -77,7 +72,8 @@ class ProfileVC: UIViewController {
         collectionView.addSubview(CustomCollectionViewCell.leftArrowButton)
         placeLeftArrowButton()
         leftArrowButtonPressConfig()
-//        configureTapGesture()
+        ifTappedOnMyImageView()
+
         collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
 
@@ -143,20 +139,33 @@ class ProfileVC: UIViewController {
     }
 
     @objc func pushPhotoGallery() {
-        //select first row of first section
         let photoRootVC = SecondPhotoViewController()
         photoRootVC.title = "Photo Gallery"
         lazy var photoNavVC = UINavigationController(rootViewController: photoRootVC)
         show(photoNavVC, sender: self)
     }
 
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let photoRootVC = SecondPhotoViewController()
-//        photoRootVC.title = "Photo Gallery"
-//        lazy var photoNavVC = UINavigationController(rootViewController: photoRootVC)
-//        show(photoNavVC, sender: self)
-////        pushViewController(SecondPhotoViewController(), animated: true)
-//    }
+    func ifTappedOnMyImageView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(objcPushPhotoGallery))
+        CustomCollectionViewCell.myImageView.addGestureRecognizer(tapGesture)
+        CustomCollectionViewCell.myImageView.isUserInteractionEnabled = true
+    }
+
+    @objc func objcPushPhotoGallery() {
+        print("objcPushPhotoGallery is pressed")
+        lazy var photoRootVC = SecondPhotoViewController()
+        photoRootVC.title = "Photo Gallery"
+        lazy var photoNavVC = UINavigationController(rootViewController: photoRootVC)
+        show(photoNavVC, sender: self)
+    }
+
+    //       @objc func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    //            let photoRootVC = SecondPhotoViewController()
+    //            photoRootVC.title = "Photo Gallery"
+    //            lazy var photoNavVC: Void = UINavigationController(rootViewController: photoRootVC)
+    //                .pushViewController(SecondPhotoViewController(), animated: true)
+    //        }
+    
     
     func configureTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fingerTap))
@@ -165,7 +174,7 @@ class ProfileVC: UIViewController {
 
     @objc func fingerTap() {
         print("fingerTap was called")
-        let photoRootVC = SecondPhotoViewController()
+        lazy var photoRootVC = SecondPhotoViewController()
         photoRootVC.title = "Photo Gallery"
         lazy var photoNavVC = UINavigationController(rootViewController: photoRootVC)
         show(photoNavVC, sender: self)
