@@ -37,8 +37,6 @@ class ProfileHeaderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-
         profileImageView.anchor(top: safeAreaLayoutGuide.topAnchor,
                                 left: safeAreaLayoutGuide.leftAnchor,
                                 paddingTop: 16,
@@ -141,7 +139,6 @@ class ProfileHeaderView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 100)
         textField.layer.cornerRadius = 12
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.clipsToBounds = true
         textField.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         textField.addTarget(self, action: #selector(textFieldTapped), for: .touchUpInside)

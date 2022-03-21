@@ -32,61 +32,43 @@ class PostTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-                tableViewTitleLabel.frame       = CGRect(x: 16,
-                                                         y: 16,
-                                                         width: self.frame.width-16,
-                                                         height: 40)
+        tableViewTitleLabel.frame = CGRect(x: 16, y: 16, width: self.frame.width-16, height: 40)
 
+        tableImageView.frame = CGRect(x: 0, y: 64, width: tableImageView.frame.size.width, height: 300)
 
-                tableImageView.frame            = CGRect(x: 0,
-                                                         y: 64,
-                                                         width: tableImageView.frame.size.width,
-                                                         height: 300)
+        tableViewDescriptionLabel.frame = CGRect(x: 16, y: 46+tableImageView.frame.size.height, width: self.frame.width-16, height: 100)
 
+        tableViewLikesLabel.frame = CGRect(x: 16, y: 316+tableViewDescriptionLabel.frame.size.height, width: self.frame.width, height: 40)
 
-                tableViewDescriptionLabel.frame = CGRect(x: 16,
-                                                         y: 46+tableImageView.frame.size.height,
-                                                         width: self.frame.width-16,
-                                                         height: 100)
+        tableViewViewsLabel.frame = CGRect(x: frame.size.width-96, y: 316+tableViewDescriptionLabel.frame.size.height, width: self.frame.width, height: 40)
 
+        NSLayoutConstraint.activate([
 
-                tableViewLikesLabel.frame       = CGRect(x: 16,
-                                                         y: 316+tableViewDescriptionLabel.frame.size.height,
-                                                         width: self.frame.width,
-                                                         height: 40)
+            tableViewTitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            tableViewTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            tableViewTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            tableViewTitleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
 
+            tableImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            tableImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            tableImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tableImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
 
-                tableViewViewsLabel.frame       = CGRect(x: 320,
-                                                         y: 316+tableViewDescriptionLabel.frame.size.height,
-                                                         width: self.frame.width,
-                                                         height: 40)
+            tableViewDescriptionLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            tableViewDescriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -16),
+            tableViewDescriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            tableViewDescriptionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
 
+            tableViewLikesLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            tableViewLikesLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            tableViewLikesLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            tableViewLikesLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
 
-        tableViewTitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        tableViewTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
-        tableViewTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
-        tableViewTitleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-
-        tableImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        tableImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        tableImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        tableImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-
-        tableViewDescriptionLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        tableViewDescriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -16).isActive = true
-        tableViewDescriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
-        tableViewDescriptionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-
-        tableViewLikesLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        tableViewLikesLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
-        tableViewLikesLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
-        tableViewLikesLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-
-        tableViewViewsLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        tableViewViewsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
-        tableViewViewsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
-        tableViewViewsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-
+            tableViewViewsLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            tableViewViewsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            tableViewViewsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            tableViewViewsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
+        ])
     }
 
     // присваиваем значения из Post к созданным элементам
@@ -135,5 +117,14 @@ class PostTableViewCell: UITableViewCell {
         tableViewViewsLabel.font = .systemFont(ofSize: 16)
         tableViewViewsLabel.textColor = .black
         tableViewViewsLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        tableImageView.image = nil
+        tableViewTitleLabel.text = nil
+        tableViewDescriptionLabel.text = nil
+        tableViewLikesLabel.text = nil
+        tableViewViewsLabel.text = nil
     }
 }

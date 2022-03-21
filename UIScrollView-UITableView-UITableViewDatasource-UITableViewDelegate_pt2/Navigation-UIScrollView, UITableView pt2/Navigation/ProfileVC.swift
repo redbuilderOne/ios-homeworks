@@ -4,8 +4,8 @@ import UIKit
 class ProfileVC: UIViewController {
 
     lazy var profileHeaderView = ProfileHeaderView()
-    lazy var tableView = ProfileTableHeaderView()
-
+    lazy var headerView = UIView()
+    lazy var tableView = UITableView()
     var posts = arrayOfPosts
 
     struct Cells {
@@ -20,22 +20,34 @@ class ProfileVC: UIViewController {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        view.addSubview(profileHeaderView)
+        view.addSubview(headerView)
+        configureViewForProfileHeader()
+        headerView.addSubview(profileHeaderView)
         view.addSubview(tableView)
-
         configureProfileHeaderViewUI()
         configureTableViewUI()
     }
 
-    private func configureProfileHeaderViewUI() {
-        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
-        profileHeaderView.anchor(top: view.safeAreaLayoutGuide.topAnchor, height: 220)
+    private func configureViewForProfileHeader() {
+        headerView.backgroundColor = .lightGray
+        headerView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            profileHeaderView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            profileHeaderView.heightAnchor.constraint(equalTo: view.heightAnchor),
-            profileHeaderView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            profileHeaderView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            headerView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            headerView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            headerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            headerView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+
+    private func configureProfileHeaderViewUI() {
+        profileHeaderView.anchor(top: headerView.safeAreaLayoutGuide.topAnchor, height: 220)
+
+        NSLayoutConstraint.activate([
+            profileHeaderView.widthAnchor.constraint(equalTo: headerView.widthAnchor),
+            profileHeaderView.heightAnchor.constraint(equalTo: headerView.heightAnchor),
+            profileHeaderView.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            profileHeaderView.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
         ])
 
     }
@@ -49,19 +61,18 @@ class ProfileVC: UIViewController {
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.anchor(top: profileHeaderView.showStatusButton.safeAreaLayoutGuide.topAnchor,
-                         left: view.safeAreaLayoutGuide.leftAnchor,
-                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                         right: view.safeAreaLayoutGuide.rightAnchor,
+                         left: headerView.safeAreaLayoutGuide.leftAnchor,
+                         bottom: headerView.safeAreaLayoutGuide.bottomAnchor,
+                         right: headerView.safeAreaLayoutGuide.rightAnchor,
                          paddingTop: 64,
                          paddingLeft: 0,
                          paddingRight: 0,
                          paddingBottom: 0)
 
         NSLayoutConstraint.activate([
-         // tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor)
         ])
     }
 
@@ -70,6 +81,8 @@ class ProfileVC: UIViewController {
         tableView.dataSource = self
     }
 }
+
+// MARK: - VC Extension
 
 extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
     // how many cells
