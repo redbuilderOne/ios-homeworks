@@ -1,9 +1,3 @@
-//
-//  LoginViewController.swift
-//  Navigation
-//
-//  Created by Дмитрий Скворцов on 02.03.2022.
-//
 
 import UIKit
 
@@ -11,7 +5,6 @@ class LoginViewController: UIViewController {
 
     let scrollView = UIScrollView()
     let contentView = UIView()
-    
     let vkLogoImageView = UIImageView()
     let emailTextField = UITextField()
     let passwordTextField = UITextField()
@@ -33,62 +26,95 @@ class LoginViewController: UIViewController {
         configureEmailTextField()
         configurePasswordTextField()
         configureLogInButton()
-
         configureTapGesture()
         fingerTap()
+        registerForKeyboardNotifications()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        registerForKeyboardNotifications()
+    }
+
+    // MARK: - Keyboard Appears
+
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+    }
+
+    @objc func onKeyboardAppear(_ notification: NSNotification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            let contentOffset: CGPoint = notification.name == UIResponder.keyboardWillHideNotification ? .zero : CGPoint(x: 0, y: keyboardHeight)
+
+            self.scrollView.setContentOffset(contentOffset, animated: true)
+        }
+    }
+
+    @objc func onKeyboardDisappear(_ notification: NSNotification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
+
+// MARK: - Setups
+
     func setupScrollView(){
+        scrollView.alwaysBounceVertical = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
 
-        scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
 
-        vkLogoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        vkLogoImageView.anchor(top: contentView.topAnchor,
-                               paddingTop: 120,
-                               width: 100,
-                               height: 100)
+            vkLogoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            vkLogoImageView.centerYAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
+            emailTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            emailTextField.centerYAnchor.constraint(equalTo: vkLogoImageView.bottomAnchor, constant: 120),
+            passwordTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            passwordTextField.centerYAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 24),
+            logInButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            logInButton.centerYAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 48)
+        ])
 
-        emailTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        emailTextField.anchor(top: vkLogoImageView.topAnchor,
-                              left: contentView.leftAnchor,
+        vkLogoImageView.anchor(width: 100, height: 100)
+
+        emailTextField.anchor(left: contentView.leftAnchor,
                               right: contentView.rightAnchor,
-                              paddingTop: 220,
                               paddingLeft: 16,
                               paddingRight: 16,
                               height: 50)
 
-        passwordTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        passwordTextField.anchor(top: vkLogoImageView.topAnchor,
-                              left: contentView.leftAnchor,
-                              right: contentView.rightAnchor,
-                              paddingTop: 272,
-                              paddingLeft: 16,
-                              paddingRight: 16,
-                              height: 50)
+        passwordTextField.anchor(left: contentView.leftAnchor,
+                                 right: contentView.rightAnchor,
+                                 paddingLeft: 16,
+                                 paddingRight: 16,
+                                 height: 50)
 
-        logInButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        logInButton.anchor(top: passwordTextField.topAnchor,
-                           left: emailTextField.leftAnchor,
+        logInButton.anchor(left: emailTextField.leftAnchor,
                            bottom: contentView.bottomAnchor,
                            right: emailTextField.rightAnchor,
-                           paddingTop: 62,
                            paddingBottom: 270,
                            height: 50)
     }
 
     private func configureVKLogoImageView() {
         vkLogoImageView.image = ProfileImages.vkLogo
-        vkLogoImageView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private func configureEmailTextField() {
@@ -101,8 +127,9 @@ class LoginViewController: UIViewController {
         emailTextField.tintColor = .tintColor
         emailTextField.autocapitalizationType = .none
         emailTextField.text = "Email or phone"
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.delegate = self
+        emailTextField.returnKeyType = .done
+        emailTextField.autocorrectionType = .no
     }
 
     private func configurePasswordTextField() {
@@ -116,13 +143,7 @@ class LoginViewController: UIViewController {
         passwordTextField.autocapitalizationType = .none
         passwordTextField.isSecureTextEntry = true
         passwordTextField.text = "Password"
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.delegate = self
-
-        passwordTextField.addTarget(self, action: #selector(passwordTextFieldTapped), for: .touchUpInside)
-    }
-
-    @objc func passwordTextFieldTapped() {
         passwordTextField.returnKeyType = .done
         passwordTextField.autocorrectionType = .no
     }
@@ -131,7 +152,6 @@ class LoginViewController: UIViewController {
         logInButton.layer.cornerRadius = 10
         logInButton.setTitle("Log in", for: .normal)
         logInButton.configuration?.image = UIImage(systemName: "blue_pixel")
-        logInButton.translatesAutoresizingMaskIntoConstraints = false
         logInButton.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
         logInButton.addTarget(self, action: #selector(logInButtonPressed), for: .touchUpInside)
     }
@@ -154,9 +174,9 @@ class LoginViewController: UIViewController {
     }
 }
 
-// расширение чтобы ".delegate = self" сработал
-extension LoginViewController: UITextFieldDelegate {
+// MARK: - Extension for .delegate = self
 
+extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
