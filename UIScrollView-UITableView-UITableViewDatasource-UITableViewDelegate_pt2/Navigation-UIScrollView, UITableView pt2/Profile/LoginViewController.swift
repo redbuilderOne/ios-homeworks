@@ -31,6 +31,12 @@ class LoginViewController: UIViewController {
         registerForKeyboardNotifications()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        registerForKeyboardNotifications()
+    }
+
     // MARK: - Keyboard Appears
 
     func registerForKeyboardNotifications() {
@@ -44,23 +50,12 @@ class LoginViewController: UIViewController {
     }
 
     @objc func onKeyboardAppear(_ notification: NSNotification) {
-        let info = notification.userInfo!
-        let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
-        let kbSize = rect.size
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            let contentOffset: CGPoint = notification.name == UIResponder.keyboardWillHideNotification ? .zero : CGPoint(x: 0, y: keyboardHeight)
 
-        let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
-        scrollView.contentInset = insets
-        scrollView.scrollIndicatorInsets = insets
-
-        var aRect = self.view.frame;
-        aRect.size.height -= kbSize.height;
-
-        let activeField: UITextField? = [emailTextField, passwordTextField].first { $0.isFirstResponder }
-        if let activeField = activeField {
-            if !aRect.contains(activeField.frame.origin) {
-                let scrollPoint = CGPoint(x: 0, y: activeField.frame.origin.y-kbSize.height)
-                scrollView.setContentOffset(scrollPoint, animated: true)
-            }
+            self.scrollView.setContentOffset(contentOffset, animated: true)
         }
     }
 
@@ -88,18 +83,34 @@ class LoginViewController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
 
             vkLogoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            vkLogoImageView.centerYAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
             emailTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            emailTextField.centerYAnchor.constraint(equalTo: vkLogoImageView.bottomAnchor, constant: 120),
             passwordTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            logInButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            passwordTextField.centerYAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 24),
+            logInButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            logInButton.centerYAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 48)
         ])
 
-        vkLogoImageView.anchor(top: contentView.topAnchor, paddingTop: 120, width: 100, height: 100)
+        vkLogoImageView.anchor(width: 100, height: 100)
 
-        emailTextField.anchor(top: vkLogoImageView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 220, paddingLeft: 16, paddingRight: 16, height: 50)
+        emailTextField.anchor(left: contentView.leftAnchor,
+                              right: contentView.rightAnchor,
+                              paddingLeft: 16,
+                              paddingRight: 16,
+                              height: 50)
 
-        passwordTextField.anchor(top: vkLogoImageView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 272, paddingLeft: 16, paddingRight: 16, height: 50)
+        passwordTextField.anchor(left: contentView.leftAnchor,
+                                 right: contentView.rightAnchor,
+                                 paddingLeft: 16,
+                                 paddingRight: 16,
+                                 height: 50)
 
-        logInButton.anchor(top: passwordTextField.topAnchor, left: emailTextField.leftAnchor, bottom: contentView.bottomAnchor, right: emailTextField.rightAnchor, paddingTop: 62, paddingBottom: 270, height: 50)
+        logInButton.anchor(left: emailTextField.leftAnchor,
+                           bottom: contentView.bottomAnchor,
+                           right: emailTextField.rightAnchor,
+                           paddingBottom: 270,
+                           height: 50)
     }
 
     private func configureVKLogoImageView() {
