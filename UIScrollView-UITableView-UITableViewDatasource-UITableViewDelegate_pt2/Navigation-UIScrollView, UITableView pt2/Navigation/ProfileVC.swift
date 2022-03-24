@@ -57,7 +57,6 @@ class ProfileVC: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: Cells.postCell)
-      //tableView.pin(to: profileHeaderView.showStatusButton)
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.anchor(top: profileHeaderView.showStatusButton.safeAreaLayoutGuide.topAnchor,
@@ -89,7 +88,6 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
-
     // what cells to show
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.postCell) as! PostTableViewCell
@@ -97,7 +95,6 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         cell.set(post: post)
         return cell
     }
-
     // высота ячейки
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 460

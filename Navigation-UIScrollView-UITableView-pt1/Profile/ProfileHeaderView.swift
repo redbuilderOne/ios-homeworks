@@ -1,9 +1,3 @@
-//
-//  ProfileHeaderView.swift
-//  Navigation
-//
-//  Created by Дмитрий Скворцов on 21.02.2022.
-//
 
 import UIKit
 
