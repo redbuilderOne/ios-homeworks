@@ -91,48 +91,29 @@ class PostTableViewCell: UITableViewCell {
         tableViewViewsLabel.text = "Views: " + String(post.views)
     }
 
+    public func set0(post: Post) {
+        tableImageView.image = post.image
+        tableViewTitleLabel.text = post.title
+        tableViewDescriptionLabel.text = post.description
+        tableViewLikesLabel.text = "Likes: " + String(post.likes)
+//        tableViewViewsLabel.text = "Views: " + String(post.views)
+    }
+
     public func reSet(post: Post) {
         tableImageView.image = post.image
         tableViewTitleLabel.text = post.title
         tableViewDescriptionLabel.text = post.description
         tableViewLikesLabel.text = "Likes: " + String(post.likes + 1)
-        tableViewViewsLabel.text = "Views: " + String(post.views)
+//        tableViewViewsLabel.text = "Views: " + String(post.views)
     }
 
-    static func firstPostViewsRecount() {
-        let newView = 1
-        firstPost.views = firstPost.views + newView
-        return
-
-        //        let currentNumberOfViews = String(firstPost.views)
-        //        if currentNumberOfViews != currentNumberOfViews {
-        //            firstPost.views = firstPost.views + newView
-        //        } else {
-        //            return
-        //        }
+    public func reSetWithViews(post: Post) {
+        tableImageView.image = post.image
+        tableViewTitleLabel.text = post.title
+        tableViewDescriptionLabel.text = post.description
+//        tableViewLikesLabel.text = "Likes: " + String(post.likes)
+        tableViewViewsLabel.text = "Views: " + String(post.views + 1)
     }
-
-    public func countLikes(post: Post) {
-        //        tableViewLikesLabel.text = "Likes: " + String(post.likes) + "1"
-    }
-
-    //    func likesTap() -> String {
-    //        print("firstPost likesTap")
-    //        let currentLikesCount = post.likes
-    //        var newLikesCount = Int()
-    //
-    //        if currentLikesCount + 1 != post.likes + 1 {
-    //            newLikesCount = post.likes + 1
-    //        } else if currentLikesCount + 1 == post.likes + 1 {
-    //            newLikesCount = post.likes - 1
-    //        } else {
-    //            newLikesCount = 0
-    //        }
-    //
-    //        let newLikesCountString = String(newLikesCount)
-    //        print("Количество лайков теперь = newLikesCountString")
-    //        return newLikesCountString
-    //    }
 
     private func confContentView() {
         NSLayoutConstraint.activate([

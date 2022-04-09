@@ -440,51 +440,29 @@ class ProfileVC: UIViewController {
         }
     }
 
-//    @objc func likesTap() -> String {
-//        print("firstPost likesTap")
-//        let currentLikesCount = firstPost.likes
-//        var newLikesCount = Int()
-//
-//        if currentLikesCount + 1 != firstPost.likes + 1 {
-//            newLikesCount = firstPost.likes + 1
-//        } else if currentLikesCount + 1 == firstPost.likes + 1 {
-//            newLikesCount = firstPost.likes - 1
-//        } else {
-//            newLikesCount = 0
-//        }
-//
-//        DispatchQueue.main.async {
-//            self.tableView1.reloadData()
-//        }
-//
-//        let newLikesCountString = String(newLikesCount)
-//        print("Количество лайков теперь = newLikesCountString")
-//        return newLikesCountString
-//    }
-
     // MARK: - PRESENT PostView
     @objc func presentFirstPostView() {
         present(ViewFirstPost(post: firstPostFull), animated: true)
-        PostTableViewCell.firstPostViewsRecount()
-        self.tableView1.reloadData()
+        isFirstPostViewTapped = true
+        tableView1.reloadData()
     }
 
     @objc func presentSecondPostView() {
         present(ViewFirstPost(post: secondPostFull), animated: true)
-        PostTableViewCell.firstPostViewsRecount()
-        self.tableView1.reloadData()
+        isSecondPostViewTapped = true
+        tableView1.reloadData()
     }
 
     @objc func presentThirdPostView() {
         present(ViewFirstPost(post: thirdPostFull), animated: true)
-        PostTableViewCell.firstPostViewsRecount()
-        self.tableView1.reloadData()
+        isThirdPostViewTapped = true
+        tableView1.reloadData()
     }
 
     @objc func presentFourthPostView() {
         present(ViewFirstPost(post: fourthPostFull), animated: true)
-        PostTableViewCell.firstPostViewsRecount()
-        self.tableView1.reloadData()
+        isFourthPostViewTapped = true
+        tableView1.reloadData()
     }
 }
 
@@ -517,10 +495,6 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         else { return 0 }
     }
 
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.tableView1.reloadRows(at: [indexPath], with: .fade)
-//    }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //MARK: 4 PHOTO CELLS
         if indexPath.section == 0 {
@@ -547,10 +521,17 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             let likesTapGesture = UITapGestureRecognizer(target: self, action: #selector(likeThePost))
             cell1.tableViewLikesLabel.addGestureRecognizer(likesTapGesture)
 
+            switch isFirstPostViewTapped {
+            case true:
+                cell1.reSetWithViews(post: post)
+            case false:
+                print("view is already added")
+            }
+
             if isFirstPostLikesTapped == true {
                 cell1.reSet(post: post)
             } else {
-                cell1.set(post: post)
+                cell1.set0(post: post)
             }
 
             return cell1
@@ -567,10 +548,17 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             let likesTapGesture = UITapGestureRecognizer(target: self, action: #selector(likeTheSecondPost))
             cell2.tableViewLikesLabel.addGestureRecognizer(likesTapGesture)
 
+            switch isSecondPostViewTapped {
+            case true:
+                cell2.reSetWithViews(post: post)
+            case false:
+                print("view is already added")
+            }
+
             if isSecondPostLikesTapped == true {
                 cell2.reSet(post: post)
             } else {
-                cell2.set(post: post)
+                cell2.set0(post: post)
             }
 
             return cell2
@@ -587,10 +575,17 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             let likesTapGesture = UITapGestureRecognizer(target: self, action: #selector(likeTheThirdPost))
             cell3.tableViewLikesLabel.addGestureRecognizer(likesTapGesture)
 
+            switch isThirdPostViewTapped {
+            case true:
+                cell3.reSetWithViews(post: post)
+            case false:
+                print("view is already added")
+            }
+
             if isThirdPostLikesTapped == true {
                 cell3.reSet(post: post)
             } else {
-                cell3.set(post: post)
+                cell3.set0(post: post)
             }
             return cell3
         }
@@ -606,10 +601,17 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             let likesTapGesture = UITapGestureRecognizer(target: self, action: #selector(likeTheFourthPost))
             cell4.tableViewLikesLabel.addGestureRecognizer(likesTapGesture)
 
+            switch isFourthPostViewTapped {
+            case true:
+                cell4.reSetWithViews(post: post)
+            case false:
+                print("view is already added")
+            }
+
             if isFourthPostLikesTapped == true {
                 cell4.reSet(post: post)
             } else {
-                cell4.set(post: post)
+                cell4.set0(post: post)
             }
 
             return cell4
