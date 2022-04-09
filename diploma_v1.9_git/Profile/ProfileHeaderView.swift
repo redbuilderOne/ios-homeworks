@@ -6,7 +6,7 @@ class ProfileHeaderView: UIView {
     static var profileImageView = UIImageView()
     static var profileLabel = UILabel()
     static var statusLabel = UILabel()
-    static var showStatusButton = NewButton(color: .blue, title: "Show status", systemImageName: "eye")
+    static var showStatusButton = StatusButton(color: .blue, title: "Show status")
     static var textField = UITextField()
 
     private var statusText = String()
@@ -26,7 +26,7 @@ class ProfileHeaderView: UIView {
         configureStatusLabel()
         configureTextField()
 
-        ProfileHeaderView.textField.isHidden = true
+        ProfileHeaderView.textField.isHidden = false
     }
 
     required init?(coder: NSCoder) {
