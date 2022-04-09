@@ -352,23 +352,115 @@ class ProfileVC: UIViewController {
     }
 
     //MARK: -LIKES COUNT FUNC
-    func likesTap(post: Post) -> String {
-        print("firstPost likesTap")
-        let currentLikesCount = post.likes
-        var newLikesCount = Int()
+    @objc func likeThePost() {
+        print("func likeThePost is tapped")
 
-        if currentLikesCount + 1 != post.likes + 1 {
-            newLikesCount = post.likes + 1
-        } else if currentLikesCount + 1 == post.likes + 1 {
-            newLikesCount = post.likes - 1
-        } else {
-            newLikesCount = 0
+        switch likesState {
+        case .likeIsNotAdded:
+            print("isFirstPostLikesTapped = true")
+            tableView1.reloadData()
+            likesState = .likeIsAdded
+            print("1 like is added to the firstPost")
+            return isFirstPostLikesTapped = true
+        case .likeIsAdded:
+            print("isFirstPostLikesTapped = false")
+            tableView1.reloadData()
+
+            if isFirstPostLikesTapped == true {
+                likesState = .likeIsNotAdded
+                print("1 like is deleted from the firstPost")
+            }
+            return isFirstPostLikesTapped = false
         }
-
-        let newLikesCountString = String(newLikesCount)
-        print("Количество лайков теперь = newLikesCountString")
-        return newLikesCountString
     }
+
+    @objc func likeTheSecondPost() {
+        print("func likeTheSecnodPost is tapped")
+
+        switch likesState2 {
+        case .likeIsNotAdded:
+            print("isSecondPostLikesTapped = true")
+            tableView1.reloadData()
+            likesState2 = .likeIsAdded
+            print("1 like is added to the 2Post")
+            return isSecondPostLikesTapped = true
+        case .likeIsAdded:
+            print("isFirstPostLikesTapped = false")
+            tableView1.reloadData()
+
+            if isFirstPostLikesTapped == true {
+                likesState2 = .likeIsNotAdded
+                print("1 like is deleted from the 2Post")
+            }
+            return isSecondPostLikesTapped = false
+        }
+    }
+
+    @objc func likeTheThirdPost() {
+        print("func likeTheThirdPost is tapped")
+
+        switch likesState3 {
+        case .likeIsNotAdded:
+            print("isThirdPostLikesTapped = true")
+            tableView1.reloadData()
+            likesState3 = .likeIsAdded
+            print("1 like is added to the 3Post")
+            return isThirdPostLikesTapped = true
+        case .likeIsAdded:
+            print("isThirdPostLikesTapped = false")
+            tableView1.reloadData()
+
+            if isThirdPostLikesTapped == true {
+                likesState3 = .likeIsNotAdded
+                print("1 like is deleted from the 3Post")
+            }
+            return isThirdPostLikesTapped = false
+        }
+    }
+
+    @objc func likeTheFourthPost() {
+        print("func likeTheFourthPost is tapped")
+
+        switch likesState4 {
+        case .likeIsNotAdded:
+            print("isSecondPostLikesTapped = true")
+            tableView1.reloadData()
+            likesState4 = .likeIsAdded
+            print("1 like is added to the 4Post")
+            return isFourthPostLikesTapped = true
+        case .likeIsAdded:
+            print("isSecondPostLikesTapped = false")
+            tableView1.reloadData()
+
+            if isFourthPostLikesTapped == true {
+                likesState4 = .likeIsNotAdded
+                print("1 like is deleted from the 4Post")
+            }
+            return isFourthPostLikesTapped = false
+        }
+    }
+
+//    @objc func likesTap() -> String {
+//        print("firstPost likesTap")
+//        let currentLikesCount = firstPost.likes
+//        var newLikesCount = Int()
+//
+//        if currentLikesCount + 1 != firstPost.likes + 1 {
+//            newLikesCount = firstPost.likes + 1
+//        } else if currentLikesCount + 1 == firstPost.likes + 1 {
+//            newLikesCount = firstPost.likes - 1
+//        } else {
+//            newLikesCount = 0
+//        }
+//
+//        DispatchQueue.main.async {
+//            self.tableView1.reloadData()
+//        }
+//
+//        let newLikesCountString = String(newLikesCount)
+//        print("Количество лайков теперь = newLikesCountString")
+//        return newLikesCountString
+//    }
 
     // MARK: - PRESENT PostView
     @objc func presentFirstPostView() {
@@ -425,36 +517,12 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         else { return 0 }
     }
 
-    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        if let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell {
-            cell.tableViewViewsLabel.textColor = UIColor.red
-        }
-//            let post = arrayOfPosts[indexPath.row]
-//            let newView = String(1)
-//            cell.tableViewViewsLabel.textColor = UIColor.red
-//            cell.tableViewViewsLabel.text = "Views: " + String(post.views)
-//        }
-//                checked[indexPath.row] = !checked[indexPath.row]
-                tableView.reloadRows(at: [indexPath], with: .automatic)
-    }
-            //OR
-//            cell.tableViewLikesLabel.backgroundColor = UIColor.green
-//        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
-
-
-
-
-        ///
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//        if let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell {
-//            print("Tapped cell : \(cell)")
-//            print("Tapp On cell:", indexPath)
-//        }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        self.tableView1.reloadRows(at: [indexPath], with: .fade)
+//    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        //MARK: 4 PHOTO CELLS
         if indexPath.section == 0 {
             guard let cell0 = tableView.dequeueReusableCell(withIdentifier: Cells.phCollectionID, for: indexPath) as? PhotoCollectionTableViewCell else { fatalError("Unable to dequeReusableCell") }
             cell0.phSet(ph: photoContent[indexPath.item])
@@ -470,8 +538,21 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             cell1.set(post: post)
             cell1.tag = indexPath.row
 
+            cell1.tableViewLikesLabel.isUserInteractionEnabled = true
+            cell1.tableImageView.isUserInteractionEnabled = true
+
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentFirstPostView))
             cell1.addGestureRecognizer(tapGesture)
+
+            let likesTapGesture = UITapGestureRecognizer(target: self, action: #selector(likeThePost))
+            cell1.tableViewLikesLabel.addGestureRecognizer(likesTapGesture)
+
+            if isFirstPostLikesTapped == true {
+                cell1.reSet(post: post)
+            } else {
+                cell1.set(post: post)
+            }
+
             return cell1
         }
 
@@ -482,6 +563,16 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
 
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentSecondPostView))
             cell2.addGestureRecognizer(tapGesture)
+
+            let likesTapGesture = UITapGestureRecognizer(target: self, action: #selector(likeTheSecondPost))
+            cell2.tableViewLikesLabel.addGestureRecognizer(likesTapGesture)
+
+            if isSecondPostLikesTapped == true {
+                cell2.reSet(post: post)
+            } else {
+                cell2.set(post: post)
+            }
+
             return cell2
         }
 
@@ -492,6 +583,15 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
 
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentThirdPostView))
             cell3.addGestureRecognizer(tapGesture)
+
+            let likesTapGesture = UITapGestureRecognizer(target: self, action: #selector(likeTheThirdPost))
+            cell3.tableViewLikesLabel.addGestureRecognizer(likesTapGesture)
+
+            if isThirdPostLikesTapped == true {
+                cell3.reSet(post: post)
+            } else {
+                cell3.set(post: post)
+            }
             return cell3
         }
 
@@ -499,8 +599,19 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             guard let cell4 = tableView.dequeueReusableCell(withIdentifier: Cells.postCellID, for: indexPath) as? PostTableViewCell else { fatalError("Unable to dequeReusableCell") }
             let post = post4[indexPath.row]
             cell4.set(post: post)
+
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentFourthPostView))
             cell4.addGestureRecognizer(tapGesture)
+
+            let likesTapGesture = UITapGestureRecognizer(target: self, action: #selector(likeTheFourthPost))
+            cell4.tableViewLikesLabel.addGestureRecognizer(likesTapGesture)
+
+            if isFourthPostLikesTapped == true {
+                cell4.reSet(post: post)
+            } else {
+                cell4.set(post: post)
+            }
+
             return cell4
         }
         return UITableViewCell()

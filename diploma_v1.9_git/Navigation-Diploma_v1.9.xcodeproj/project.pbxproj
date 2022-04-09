@@ -10,6 +10,7 @@
 		FF0227BA27C3890D0067C765 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0227B927C3890D0067C765 /* ProfileHeaderView.swift */; };
 		FF09F9B527D3643600384B2F /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF09F9B427D3643600384B2F /* PostTableViewCell.swift */; };
 		FF1C334928019476000A7D12 /* PhotoGalleryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C334828019476000A7D12 /* PhotoGalleryData.swift */; };
+		FF1C334B2801E6B7000A7D12 /* PostLikesStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C334A2801E6B7000A7D12 /* PostLikesStates.swift */; };
 		FF2F68DC27F331AF00CB5A12 /* ViewForTableView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F68DB27F331AF00CB5A12 /* ViewForTableView2.swift */; };
 		FF75DFCC27BF9903005C48A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF75DFCB27BF9903005C48A4 /* AppDelegate.swift */; };
 		FF75DFCE27BF9903005C48A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF75DFCD27BF9903005C48A4 /* SceneDelegate.swift */; };
@@ -61,6 +62,7 @@
 		FF0227B927C3890D0067C765 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		FF09F9B427D3643600384B2F /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		FF1C334828019476000A7D12 /* PhotoGalleryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryData.swift; sourceTree = "<group>"; };
+		FF1C334A2801E6B7000A7D12 /* PostLikesStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLikesStates.swift; sourceTree = "<group>"; };
 		FF2F68DB27F331AF00CB5A12 /* ViewForTableView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForTableView2.swift; sourceTree = "<group>"; };
 		FF75DFC827BF9903005C48A4 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF75DFCB27BF9903005C48A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		FF75DFBF27BF9903005C48A4 = {
 			isa = PBXGroup;
 			children = (
+				FF1C334A2801E6B7000A7D12 /* PostLikesStates.swift */,
 				FF2F68DA27F3317400CB5A12 /* LoginScreen */,
 				FF0227B827C388CB0067C765 /* Profile */,
 				FF75DFCA27BF9903005C48A4 /* Navigation */,
@@ -378,6 +381,7 @@
 				FFA82CEF27EFB515001E229D /* MyTableViewCell.swift in Sources */,
 				FFF6C76527D52F40009260AB /* PhotosGalleryView.swift in Sources */,
 				FF925F1A27CFDBD40089764A /* LoginViewController.swift in Sources */,
+				FF1C334B2801E6B7000A7D12 /* PostLikesStates.swift in Sources */,
 				FFF4B02927C0DCA7005CA9F1 /* PostVC.swift in Sources */,
 				FF89494C27DC94E800B40707 /* PhotoGalleryCollectionViewCell.swift in Sources */,
 				FFF2549A27FF605E00E64F16 /* ViewPostVC.swift in Sources */,

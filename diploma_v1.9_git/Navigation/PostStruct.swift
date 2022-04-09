@@ -17,6 +17,7 @@ var firstPost = Post(title: "Первый пост",
                      likes: 238,
                      views: 867)
 
+
 var firstPostFull = Post(title: "Первый пост",
                      author: "Forbes Russia",
                      description: firstPostText,

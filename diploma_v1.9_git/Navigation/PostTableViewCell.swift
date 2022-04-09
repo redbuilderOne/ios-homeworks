@@ -91,9 +91,18 @@ class PostTableViewCell: UITableViewCell {
         tableViewViewsLabel.text = "Views: " + String(post.views)
     }
 
+    public func reSet(post: Post) {
+        tableImageView.image = post.image
+        tableViewTitleLabel.text = post.title
+        tableViewDescriptionLabel.text = post.description
+        tableViewLikesLabel.text = "Likes: " + String(post.likes + 1)
+        tableViewViewsLabel.text = "Views: " + String(post.views)
+    }
+
     static func firstPostViewsRecount() {
         let newView = 1
         firstPost.views = firstPost.views + newView
+        return
 
         //        let currentNumberOfViews = String(firstPost.views)
         //        if currentNumberOfViews != currentNumberOfViews {
