@@ -504,7 +504,6 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             return cell4
         }
         return UITableViewCell()
-        //let post = postContent[indexPath.row]
     }
 
     // MARK: -heightForRowAt (высота ячейки tableView)
@@ -514,16 +513,16 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             let height: CGFloat = 120.0
             return height
         } else if indexPath.section == 1 {
-            let height: CGFloat = 460.0
+            let height: CGFloat = 526.0
             return height
         } else if indexPath.section == 2 {
-            let height: CGFloat = 460.0
+            let height: CGFloat = 526.0
             return height
         } else if indexPath.section == 3 {
-            let height: CGFloat = 460.0
+            let height: CGFloat = 526.0
             return height
         } else if indexPath.section == 4 {
-            let height: CGFloat = 460.0
+            let height: CGFloat = 526.0
             return height
         }
         return CGFloat()
