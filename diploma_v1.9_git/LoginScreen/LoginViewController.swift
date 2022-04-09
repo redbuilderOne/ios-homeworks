@@ -164,12 +164,12 @@ class LoginViewController: UIViewController {
         emailTextField.layer.cornerRadius = 10
         emailTextField.layer.borderWidth = 0.5
         emailTextField.layer.borderColor = CGColor(red: 211, green: 211, blue: 211, alpha: 100)
-        emailTextField.textColor = .black
         emailTextField.font = .systemFont(ofSize: 16)
         emailTextField.backgroundColor = .systemGray6
         emailTextField.tintColor = .tintColor
         emailTextField.autocapitalizationType = .none
-        emailTextField.text = "Email"
+        emailTextField.placeholder = "Email"
+        emailTextField.textColor = .black
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.delegate = self
     }
@@ -178,16 +178,15 @@ class LoginViewController: UIViewController {
         passwordTextField.layer.cornerRadius = 10
         passwordTextField.layer.borderWidth = 0.5
         passwordTextField.layer.borderColor = CGColor(red: 211, green: 211, blue: 211, alpha: 100)
-        passwordTextField.textColor = .black
         passwordTextField.font = .systemFont(ofSize: 16)
         passwordTextField.backgroundColor = .systemGray6
         passwordTextField.tintColor = .tintColor
         passwordTextField.autocapitalizationType = .none
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.text = "Password"
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.delegate = self
-
+        passwordTextField.placeholder = "Password"
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.textColor = .black
         passwordTextField.addTarget(self, action: #selector(passwordTextFieldTapped), for: .touchUpInside)
     }
 
@@ -209,6 +208,7 @@ class LoginViewController: UIViewController {
     // MARK: - Login Button
     @objc func logInButtonPressed() {
         lazy var profileVC = ProfileVC()
+        self.emailValidationMessageLabel.isHidden = true
 
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             let currentText = emailTextField.text ?? ""
@@ -258,9 +258,20 @@ class LoginViewController: UIViewController {
         }
 
         if isValidEmail(emailID: email) == false {
+            self.emailTextField.placeholder = ""
             self.emailTextField.text = ""
             self.emailValidationMessageLabel.isHidden = false
-            self.emailValidationMessageLabel.text = "Укажите валидный email"
+
+            lazy var emailTextValidation = UIViewPropertyAnimator(duration:0.5, curve: .easeIn) {
+//                self.emailValidationMessageLabel.isHidden = true
+            }
+
+            UIView.animate(withDuration: 5.5, animations: {
+                self.emailValidationMessageLabel.textAlignment = .right
+                self.emailValidationMessageLabel.text = "Укажите валидный email"
+            }) { (isFinished) in
+                emailTextValidation.startAnimation(afterDelay: 5.5)
+            }
             return
         }
 
@@ -288,8 +299,6 @@ class LoginViewController: UIViewController {
         print("fingerTap was called")
         emailValidationMessageLabel.isHidden = true
         emailValidationMessageLabel.text = ""
-        emailTextField.text = "Email"
-        passwordTextField.text = "Password"
         messageLabel.isHidden = true
         messageLabel.text = ""
         contentView.endEditing(true)
