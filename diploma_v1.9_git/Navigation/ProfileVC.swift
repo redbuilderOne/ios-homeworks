@@ -35,6 +35,7 @@ class ProfileVC: UIViewController {
 
     var postContent: [Post] = []
     var photoContent: [UIImage] = []
+    var posts = [firstPost, secondPost, thirdPost, fourthPost]
 
     public struct Cells {
         static let postCellID = "PostTableViewCell"
@@ -261,7 +262,6 @@ class ProfileVC: UIViewController {
 
         AnimationCustmization.avatarButtonAnimation = UIViewPropertyAnimator(duration: 0.8, curve: .easeInOut) {
 
-            //            AnimationCustmization.backgroundViewForAvatar.addSubview(self.cancelButton)
             configureCancelButton()
 
             self.cancelButton.anchor(top: self.avatarImgForAnimation.safeAreaLayoutGuide.topAnchor,
@@ -331,8 +331,6 @@ class ProfileVC: UIViewController {
             }
         }
     }
-
-
     // MARK: - Buttons & Actions
     func leftArrowButtonPressConfig() {
         PhotoCollectionTableViewCell.leftArrowButton.addTarget(self, action: #selector(pushPhotoGallery), for: .touchUpInside)
@@ -441,6 +439,7 @@ class ProfileVC: UIViewController {
     }
 
     // MARK: - PRESENT PostView
+
     @objc func presentFirstPostView() {
         present(ViewFirstPost(post: firstPostFull), animated: true)
         isFirstPostViewTapped = true
@@ -464,26 +463,27 @@ class ProfileVC: UIViewController {
         isFourthPostViewTapped = true
         tableView1.reloadData()
     }
+    var deletePostIndexPath: NSIndexPath? = nil
 }
 
 // MARK: - fetchData extension
 extension ProfileVC {
 
     func fetchPostData() -> [Post] {
-        return [firstPost, secondPost, thirdPost, fourthPost]
+        return posts
     }
 
     func fetchPhotoData() -> [UIImage] {
         return previewArrayOfCollectionViewImg
     }
 }
-let selectedPost = arrayOfPosts
 
 // MARK: - tableView extension
 extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        print("number of sections : \(1 + posts.count)")
+        return 1 + posts.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -508,9 +508,9 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         //MARK: - POST CELLS
         else if indexPath.section == 1 {
             guard let cell1 = tableView.dequeueReusableCell(withIdentifier: Cells.postCellID, for: indexPath) as? PostTableViewCell else { fatalError("Unable to dequeReusableCell") }
-            let post = post1[indexPath.row]
+            //            let post = fetchPostData()[]
+            let post = posts[0]
             cell1.set(post: post)
-            cell1.tag = indexPath.row
 
             cell1.tableViewLikesLabel.isUserInteractionEnabled = true
             cell1.tableImageView.isUserInteractionEnabled = true
@@ -539,7 +539,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
 
         else if indexPath.section == 2 {
             guard let cell2 = tableView.dequeueReusableCell(withIdentifier: Cells.postCellID, for: indexPath) as? PostTableViewCell else { fatalError("Unable to dequeReusableCell") }
-            let post = post2[indexPath.row]
+            let post = posts[1]
             cell2.set(post: post)
 
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentSecondPostView))
@@ -566,7 +566,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
 
         else if indexPath.section == 3 {
             guard let cell3 = tableView.dequeueReusableCell(withIdentifier: Cells.postCellID, for: indexPath) as? PostTableViewCell else { fatalError("Unable to dequeReusableCell") }
-            let post = post3[indexPath.row]
+            let post = posts[2]
             cell3.set(post: post)
 
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentThirdPostView))
@@ -592,7 +592,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
 
         else if indexPath.section == 4 {
             guard let cell4 = tableView.dequeueReusableCell(withIdentifier: Cells.postCellID, for: indexPath) as? PostTableViewCell else { fatalError("Unable to dequeReusableCell") }
-            let post = post4[indexPath.row]
+            let post = posts[3]
             cell4.set(post: post)
 
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentFourthPostView))
@@ -618,26 +618,30 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         }
         return UITableViewCell()
     }
+    //    //MARK: -Deleting Rows (in progress)
 
+    //    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    //        return .delete
+    //    }
+    //
+    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    //        if editingStyle == .delete {
+    //            tableView1.beginUpdates()
+    //
+    //            posts.remove(at: indexPath.row)
+    //            tableView1.endUpdates()
+    //            tableView1.deleteRows(at: [indexPath], with: .fade)
+    //        }
+    //    }
     // MARK: -heightForRowAt (высота ячейки tableView)
     // photoCollectionView height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             let height: CGFloat = 120.0
             return height
-        } else if indexPath.section == 1 {
-            let height: CGFloat = 526.0
-            return height
-        } else if indexPath.section == 2 {
-            let height: CGFloat = 526.0
-            return height
-        } else if indexPath.section == 3 {
-            let height: CGFloat = 526.0
-            return height
-        } else if indexPath.section == 4 {
+        } else {
             let height: CGFloat = 526.0
             return height
         }
-        return CGFloat()
     }
 }

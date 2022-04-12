@@ -61,7 +61,7 @@ extension ViewFirstPost: UITableViewDelegate, UITableViewDataSource {
         switch index {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            //            cell.selectionStyle = .none
+            cell.selectionStyle = .none
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = post.title
             return cell

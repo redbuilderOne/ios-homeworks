@@ -143,6 +143,7 @@ class ProfileHeaderView: UIView {
         ProfileHeaderView.showStatusButton.configuration?.baseForegroundColor = .white
         ProfileHeaderView.showStatusButton.configuration?.baseBackgroundColor = .black
         ProfileHeaderView.showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        ProfileHeaderView.textField.endEditing(true)
         if isEmptyStatus() == false {
             return
         } else {

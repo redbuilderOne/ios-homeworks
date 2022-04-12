@@ -17,9 +17,6 @@
 		FF75DFCE27BF9903005C48A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF75DFCD27BF9903005C48A4 /* SceneDelegate.swift */; };
 		FF75DFD527BF9904005C48A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF75DFD427BF9904005C48A4 /* Assets.xcassets */; };
 		FF75DFD827BF9904005C48A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF75DFD627BF9904005C48A4 /* LaunchScreen.storyboard */; };
-		FF75DFE327BF9904005C48A4 /* NavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF75DFE227BF9904005C48A4 /* NavigationTests.swift */; };
-		FF75DFED27BF9904005C48A4 /* NavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF75DFEC27BF9904005C48A4 /* NavigationUITests.swift */; };
-		FF75DFEF27BF9904005C48A4 /* NavigationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF75DFEE27BF9904005C48A4 /* NavigationUITestsLaunchTests.swift */; };
 		FF75DFFC27BF9ABE005C48A4 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF75DFFB27BF9ABE005C48A4 /* FeedVC.swift */; };
 		FF75DFFE27BF9ACD005C48A4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF75DFFD27BF9ACD005C48A4 /* ProfileVC.swift */; };
 		FF7D6A9B27CE84A8001B507E /* StackViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7D6A9A27CE84A8001B507E /* StackViewButton.swift */; };
@@ -73,10 +70,7 @@
 		FF75DFD727BF9904005C48A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF75DFD927BF9904005C48A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF75DFDE27BF9904005C48A4 /* NavigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF75DFE227BF9904005C48A4 /* NavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTests.swift; sourceTree = "<group>"; };
 		FF75DFE827BF9904005C48A4 /* NavigationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF75DFEC27BF9904005C48A4 /* NavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUITests.swift; sourceTree = "<group>"; };
-		FF75DFEE27BF9904005C48A4 /* NavigationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF75DFFB27BF9ABE005C48A4 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		FF75DFFD27BF9ACD005C48A4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		FF7D6A9A27CE84A8001B507E /* StackViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewButton.swift; sourceTree = "<group>"; };
@@ -124,35 +118,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FF0227B827C388CB0067C765 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				FFFF6F4D27F5DAF90089CF4E /* Animation */,
-				FFFF6F4C27F5D6400089CF4E /* TableView */,
-				FF0227B927C3890D0067C765 /* ProfileHeaderView.swift */,
-				FF89494927DBD15C00B40707 /* PhotoGalleryVC.swift */,
-				FF75DFFD27BF9ACD005C48A4 /* ProfileVC.swift */,
-				FFF2549927FF605E00E64F16 /* ViewPostVC.swift */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		FF2F68DA27F3317400CB5A12 /* LoginScreen */ = {
-			isa = PBXGroup;
-			children = (
-				FF925F1927CFDBD40089764A /* LoginViewController.swift */,
-			);
-			path = LoginScreen;
-			sourceTree = "<group>";
-		};
 		FF75DFBF27BF9903005C48A4 = {
 			isa = PBXGroup;
 			children = (
-				FF2F68DA27F3317400CB5A12 /* LoginScreen */,
-				FF0227B827C388CB0067C765 /* Profile */,
 				FF75DFCA27BF9903005C48A4 /* Navigation */,
-				FF75DFE127BF9904005C48A4 /* NavigationTests */,
-				FF75DFEB27BF9904005C48A4 /* NavigationUITests */,
 				FF75DFC927BF9903005C48A4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -170,6 +139,14 @@
 		FF75DFCA27BF9903005C48A4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				FFFF6F4C27F5D6400089CF4E /* TableView */,
+				FF925F1927CFDBD40089764A /* LoginViewController.swift */,
+				FF0227B927C3890D0067C765 /* ProfileHeaderView.swift */,
+				FF89494927DBD15C00B40707 /* PhotoGalleryVC.swift */,
+				FF75DFFD27BF9ACD005C48A4 /* ProfileVC.swift */,
+				FFF2549927FF605E00E64F16 /* ViewPostVC.swift */,
+				FFFF6F4E27F5DB080089CF4E /* AnimationVC.swift */,
+				FFF2549727FCDBC400E64F16 /* AnimationSetting.swift */,
 				FF75DFCB27BF9903005C48A4 /* AppDelegate.swift */,
 				FF75DFCD27BF9903005C48A4 /* SceneDelegate.swift */,
 				FFF4B02827C0DCA7005CA9F1 /* PostVC.swift */,
@@ -189,23 +166,6 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		FF75DFE127BF9904005C48A4 /* NavigationTests */ = {
-			isa = PBXGroup;
-			children = (
-				FF75DFE227BF9904005C48A4 /* NavigationTests.swift */,
-			);
-			path = NavigationTests;
-			sourceTree = "<group>";
-		};
-		FF75DFEB27BF9904005C48A4 /* NavigationUITests */ = {
-			isa = PBXGroup;
-			children = (
-				FF75DFEC27BF9904005C48A4 /* NavigationUITests.swift */,
-				FF75DFEE27BF9904005C48A4 /* NavigationUITestsLaunchTests.swift */,
-			);
-			path = NavigationUITests;
-			sourceTree = "<group>";
-		};
 		FFFF6F4C27F5D6400089CF4E /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,15 +180,6 @@
 				FFA82CEE27EFB515001E229D /* MyTableViewCell.swift */,
 			);
 			path = TableView;
-			sourceTree = "<group>";
-		};
-		FFFF6F4D27F5DAF90089CF4E /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-				FFFF6F4E27F5DB080089CF4E /* AnimationVC.swift */,
-				FFF2549727FCDBC400E64F16 /* AnimationSetting.swift */,
-			);
-			path = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,7 +347,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF75DFE327BF9904005C48A4 /* NavigationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,8 +354,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF75DFEF27BF9904005C48A4 /* NavigationUITestsLaunchTests.swift in Sources */,
-				FF75DFED27BF9904005C48A4 /* NavigationUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

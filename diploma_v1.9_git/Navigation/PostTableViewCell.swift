@@ -32,7 +32,6 @@ class PostTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-
         tableViewTitleLabel.anchor(top: contentView.topAnchor,
                                    left: contentView.leftAnchor,
                                    paddingTop: 16,
@@ -96,7 +95,6 @@ class PostTableViewCell: UITableViewCell {
         tableViewTitleLabel.text = post.title
         tableViewDescriptionLabel.text = post.description
         tableViewLikesLabel.text = "Likes: " + String(post.likes)
-//        tableViewViewsLabel.text = "Views: " + String(post.views)
     }
 
     public func reSet(post: Post) {
@@ -104,14 +102,12 @@ class PostTableViewCell: UITableViewCell {
         tableViewTitleLabel.text = post.title
         tableViewDescriptionLabel.text = post.description
         tableViewLikesLabel.text = "Likes: " + String(post.likes + 1)
-//        tableViewViewsLabel.text = "Views: " + String(post.views)
     }
 
     public func reSetWithViews(post: Post) {
         tableImageView.image = post.image
         tableViewTitleLabel.text = post.title
         tableViewDescriptionLabel.text = post.description
-//        tableViewLikesLabel.text = "Likes: " + String(post.likes)
         tableViewViewsLabel.text = "Views: " + String(post.views + 1)
     }
 

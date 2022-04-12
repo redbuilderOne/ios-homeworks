@@ -68,6 +68,7 @@ var fourthPostFull = Post(title: "Четвертый пост",
                       views: 307)
 
 var arrayOfPosts: [Post] = [firstPost, secondPost, thirdPost, fourthPost]
+
 var post1: [Post] = [firstPost]
 var post2: [Post] = [secondPost]
 var post3: [Post] = [thirdPost]
