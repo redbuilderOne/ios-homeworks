@@ -101,7 +101,6 @@ class ProfileHeaderView: UIView {
     }
 
     @objc func buttonPressed() {
-        ProfileHeaderView.textField.isHidden = false
         print("\(ProfileHeaderView.statusLabel.text!)")
         ProfileHeaderView.showStatusButton.configuration?.title = "Set status"
         ProfileHeaderView.showStatusButton.configuration?.baseForegroundColor = .white
@@ -118,7 +117,6 @@ class ProfileHeaderView: UIView {
     private func isEmptyStatus() -> Bool {
         if ProfileHeaderView.textField.text == "" {
             print("Status is nil")
-            ProfileHeaderView.textField.isHidden = false
             ProfileHeaderView.textField.backgroundColor = .systemPink
             lazy var statusTextFieldReAnimation = UIViewPropertyAnimator(duration:0.5, curve: .easeIn) {
                 ProfileHeaderView.textField.backgroundColor = .systemGray6
@@ -137,7 +135,6 @@ class ProfileHeaderView: UIView {
     }
 
     @objc func secondButtonPress() {
-        ProfileHeaderView.textField.isHidden = true
         ProfileHeaderView.statusLabel.text = statusText
         ProfileHeaderView.showStatusButton.configuration?.title = "Show status"
         ProfileHeaderView.showStatusButton.configuration?.baseForegroundColor = .white
