@@ -6,7 +6,7 @@ class ProfileHeaderView: UIView {
     static var profileImageView = UIImageView()
     static var profileLabel = UILabel()
     static var statusLabel = UILabel()
-    static var showStatusButton = StatusButton(color: .blue, title: "Show status")
+    static var showStatusButton = StatusButton(color: .blue, title: "Set status")
     static var textField = UITextField()
 
     private var statusText = String()
@@ -136,7 +136,7 @@ class ProfileHeaderView: UIView {
 
     @objc func secondButtonPress() {
         ProfileHeaderView.statusLabel.text = statusText
-        ProfileHeaderView.showStatusButton.configuration?.title = "Show status"
+//      ProfileHeaderView.showStatusButton.configuration?.title = "Show status"
         ProfileHeaderView.showStatusButton.configuration?.baseForegroundColor = .white
         ProfileHeaderView.showStatusButton.configuration?.baseBackgroundColor = .black
         ProfileHeaderView.showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
