@@ -28,5 +28,4 @@ class PostVC: UIViewController {
 
         return UINavigationController(rootViewController: barButtonNV)
     }
-
 }

@@ -7,7 +7,6 @@ class FeedVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .systemBackground
         configureStackView()
     }
@@ -28,7 +27,7 @@ class FeedVC: UIViewController {
 
     func addButtonsToStackView() {
         let numberOfButons = 2
-
+        
         for i in 1...numberOfButons {
             let button = StackViewButton()
             button.setTitle("\(i)", for: .normal)

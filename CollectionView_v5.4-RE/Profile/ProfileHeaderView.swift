@@ -141,7 +141,6 @@ class ProfileHeaderView: UIView {
         textField.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         textField.addTarget(self, action: #selector(textFieldTapped), for: .touchUpInside)
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-        // чтобы доставать и убирать клавиатуру + нужен протокол UITextFieldDelegate в расширении
         textField.delegate = self
         textField.anchor(top: statusLabel.topAnchor,
                          left: statusLabel.leftAnchor,
@@ -171,14 +170,8 @@ class ProfileHeaderView: UIView {
         return statusText
     }
 
-    //    private func configureTapGesture() {
-    //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fingerTap))
-    //        self.addGestureRecognizer(tapGesture)
-    //    }
-
     @objc func fingerTap() {
         print("fingerTap was called")
-        // при нажатии пальем в пустое поле экрана завершается редактирование текста self.endEditing(true)
         self.endEditing(true)
     }
 
@@ -248,11 +241,9 @@ extension UIView {
     }
 }
 
-// расширение чтобы "textField.delegate = self" сработал
 extension ProfileHeaderView: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // resign = dismiss
         textField.resignFirstResponder()
         return true
     }

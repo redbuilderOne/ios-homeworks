@@ -148,7 +148,6 @@ class LoginViewController: UIViewController {
     }
 }
 
-// расширение чтобы ".delegate = self" сработал
 extension LoginViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

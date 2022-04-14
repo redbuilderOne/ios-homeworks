@@ -113,7 +113,6 @@
 		FF0227B827C388CB0067C765 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				FFFF6F4C27F5D6400089CF4E /* TableView */,
 				FF0227B927C3890D0067C765 /* ProfileHeaderView.swift */,
 				FF89494927DBD15C00B40707 /* PhotoGalleryVC.swift */,
 				FF75DFFD27BF9ACD005C48A4 /* ProfileVC.swift */,
@@ -121,20 +120,12 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		FF2F68DA27F3317400CB5A12 /* LoginScreen */ = {
-			isa = PBXGroup;
-			children = (
-				FF925F1927CFDBD40089764A /* LoginViewController.swift */,
-			);
-			path = LoginScreen;
-			sourceTree = "<group>";
-		};
 		FF75DFBF27BF9903005C48A4 = {
 			isa = PBXGroup;
 			children = (
-				FF2F68DA27F3317400CB5A12 /* LoginScreen */,
-				FF0227B827C388CB0067C765 /* Profile */,
 				FF75DFCA27BF9903005C48A4 /* Navigation */,
+				FF0227B827C388CB0067C765 /* Profile */,
+				FFFF6F4C27F5D6400089CF4E /* TableView */,
 				FF75DFE127BF9904005C48A4 /* NavigationTests */,
 				FF75DFEB27BF9904005C48A4 /* NavigationUITests */,
 				FF75DFC927BF9903005C48A4 /* Products */,
@@ -156,12 +147,13 @@
 			children = (
 				FF75DFCB27BF9903005C48A4 /* AppDelegate.swift */,
 				FF75DFCD27BF9903005C48A4 /* SceneDelegate.swift */,
+				FF925F1927CFDBD40089764A /* LoginViewController.swift */,
 				FFF4B02827C0DCA7005CA9F1 /* PostVC.swift */,
 				FFF4B02E27C0F6AB005CA9F1 /* InfoVC.swift */,
-				FFF4B0E827C23419005CA9F1 /* Alert.swift */,
 				FF75DFFB27BF9ABE005C48A4 /* FeedVC.swift */,
-				FF7D6A9A27CE84A8001B507E /* StackViewButton.swift */,
+				FFF4B0E827C23419005CA9F1 /* Alert.swift */,
 				FFF4B02C27C0F045005CA9F1 /* PostStruct.swift */,
+				FF7D6A9A27CE84A8001B507E /* StackViewButton.swift */,
 				FF09F9B427D3643600384B2F /* PostTableViewCell.swift */,
 				FFF4B02A27C0DF35005CA9F1 /* Button.swift */,
 				FF925F1B27CFDF830089764A /* CustomColor.swift */,
@@ -281,7 +273,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v5.3" */;
+			buildConfigurationList = FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v5.4-re" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -649,7 +641,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v5.3" */ = {
+		FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v5.4-re" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF75DFF027BF9904005C48A4 /* Debug */,
