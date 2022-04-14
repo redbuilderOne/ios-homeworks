@@ -58,7 +58,6 @@ class ProfileVC: UIViewController {
     }
 
     // MARK: - Configurations
-
     private func configureViewForProfileHeader() {
         headerView.backgroundColor = .systemGray6
         headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -152,6 +151,8 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             cell0.phSet(ph: photoContent[indexPath.item])
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fingerTap))
             cell0.addGestureRecognizer(tapGesture)
+
+//            PhotoCollectionTableViewCell.leftArrowButton.addGestureRecognizer(tapGesture)
             return cell0
         }
 
@@ -208,18 +209,3 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         return CGFloat()
     }
 }
-    // MARK: - tableView HEADER
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        if section == 0 {
-//            let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 280))
-//            headerView.backgroundColor = .systemGray6
-//            return headerView
-//        } else if section != 0 {
-//        }
-//        return UIView()
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        // высота хедера
-//        return CGFloat(280)
-//    }

@@ -32,7 +32,6 @@
 		FFF4B02F27C0F6AB005CA9F1 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF4B02E27C0F6AB005CA9F1 /* InfoVC.swift */; };
 		FFF4B0E927C23419005CA9F1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF4B0E827C23419005CA9F1 /* Alert.swift */; };
 		FFF6C76327D52B6B009260AB /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF6C76227D52B6B009260AB /* PhotoCollectionViewCell.swift */; };
-		FFF6C76527D52F40009260AB /* PhotosGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF6C76427D52F40009260AB /* PhotosGalleryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +81,6 @@
 		FFF4B02E27C0F6AB005CA9F1 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
 		FFF4B0E827C23419005CA9F1 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		FFF6C76227D52B6B009260AB /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		FFF6C76427D52F40009260AB /* PhotosGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosGalleryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +182,6 @@
 		FFFF6F4C27F5D6400089CF4E /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				FFF6C76427D52F40009260AB /* PhotosGalleryView.swift */,
 				FF13E7542808812E005638C7 /* CollectionData.swift */,
 				FFA82CF027EFB62F001E229D /* CustomCollectionViewCell.swift */,
 				FF89494B27DC94E800B40707 /* PhotoGalleryCollectionViewCell.swift */,
@@ -273,7 +270,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v5.4-re" */;
+			buildConfigurationList = FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v5.5" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -341,7 +338,6 @@
 				FF0227BA27C3890D0067C765 /* ProfileHeaderView.swift in Sources */,
 				FF75DFCE27BF9903005C48A4 /* SceneDelegate.swift in Sources */,
 				FFA82CEF27EFB515001E229D /* MyTableViewCell.swift in Sources */,
-				FFF6C76527D52F40009260AB /* PhotosGalleryView.swift in Sources */,
 				FF925F1A27CFDBD40089764A /* LoginViewController.swift in Sources */,
 				FFF4B02927C0DCA7005CA9F1 /* PostVC.swift in Sources */,
 				FF89494C27DC94E800B40707 /* PhotoGalleryCollectionViewCell.swift in Sources */,
@@ -641,7 +637,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v5.4-re" */ = {
+		FF75DFC327BF9903005C48A4 /* Build configuration list for PBXProject "Navigation-CollectionView_v5.5" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF75DFF027BF9904005C48A4 /* Debug */,
