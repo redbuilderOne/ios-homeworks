@@ -40,7 +40,6 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         lazy var photoRootVC = ProfileVC()
         lazy var photoNavVC = UINavigationController(rootViewController: photoRootVC)
         photoRootVC.navigationController?.popViewController(animated: true)
-//        PhotoGalleryCollectionViewCell.navigationController?.pushViewController(photoNavVC, animated: true)
     }
 }
 
@@ -78,7 +77,6 @@ class PhotoGalleryCollectionViewCell: UICollectionViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        // расположение изображения в ячейке
         myImageView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.height)
     }
 

@@ -70,7 +70,6 @@ class PhotoCollectionTableViewCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 1
-        // отсупы внутри ячейки
         layout.sectionInset = UIEdgeInsets(top: 42, left: 12, bottom: 12, right: 12)
         layout.itemSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
         collectionView.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)

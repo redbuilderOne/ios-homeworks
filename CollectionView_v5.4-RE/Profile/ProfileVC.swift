@@ -38,6 +38,7 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
         postContent = fetchPostData()
         photoContent = fetchPhotoData()
+        self.navigationController?.navigationBar.isHidden = true
     }
 
     override func viewWillLayoutSubviews() {
@@ -49,6 +50,11 @@ class ProfileVC: UIViewController {
         view.addSubview(tableView1)
         confTableView()
         configureProfileHeaderViewUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
     }
 
     // MARK: - Configurations
