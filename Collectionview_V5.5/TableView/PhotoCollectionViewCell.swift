@@ -2,7 +2,7 @@
 import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
-    // Фото галерея
+    // Photo Gallery Preview 4photo
     static let identifier = "PhotoCollectionViewCell"
     
     private lazy var myImageView: UIImageView = {
@@ -59,7 +59,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         myImageView.isUserInteractionEnabled = true
     }
 
-    // MARK: - TODO
     @objc func objcPushPhotoGallery() {
         print("objcPushPhotoGallery is pressed")
         lazy var photoRootVC = SecondPhotoViewController()

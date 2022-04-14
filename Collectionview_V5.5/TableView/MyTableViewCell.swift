@@ -6,6 +6,7 @@ class PhotoCollectionTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         createCVLayout()
+        contentView.addSubview(collectionView)
         self.collectionView.isScrollEnabled = true
         collectionView.delegate = self
         collectionView.dataSource = self

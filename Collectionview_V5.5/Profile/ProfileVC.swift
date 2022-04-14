@@ -152,7 +152,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fingerTap))
             cell0.addGestureRecognizer(tapGesture)
 
-//            PhotoCollectionTableViewCell.leftArrowButton.addGestureRecognizer(tapGesture)
+            PhotoCollectionTableViewCell.leftArrowButton.addGestureRecognizer(tapGesture)
             return cell0
         }
 

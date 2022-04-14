@@ -30,7 +30,6 @@ class SecondPhotoViewController: UIViewController {
             return
         }
         collectionView.register(PhotoGalleryCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoGalleryCollectionViewCell")
-        collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
 
         collectionView.dataSource = self
         collectionView.delegate = self
